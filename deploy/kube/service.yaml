@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: hubot
+  name: hubot-service
+  labels:
+    app: hubot-service
+spec:
+  ports:
+  - name: hubot-svc-port
+    protocol: TCP
+    port: 80
+    targetPort: hubot-port
+  selector:
+    app: hubot
+  type: ClusterIP

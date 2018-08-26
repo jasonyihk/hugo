@@ -1,0 +1,15 @@
+{
+  "HUBOT_SLACK_TOKEN": "SALCK-TOKEN",
+  "REDIS_URL": "redis://redis:6379/hubot",
+  "EXPRESS_PORT": "8080",
+  "HUBOT_JENKINS_URL": "https://jenkins.example.com",
+  "JENKINS_AUTH_USERID": "hubot",
+  "JENKINS_AUTH_PASSWD": "password",
+  "BITBUCKET_DEPLOY_USERID": "devops",
+  "BITBUCKET_DEPLOY_PASSWD": "password",
+  "HUBOT_DOMAIN": "hubot.example.com",
+  "HUBOT_BITBUCKET_BASIC_AUTH_ID": "bitbucket",
+  "HUBOT_BITBUCKET_BASIC_AUTH_PASSWD": "password",
+  "HUBOT_JENKINS_BASIC_AUTH_ID": "jenkins",
+  "HUBOT_JENKINS_BASIC_AUTH_PASSWD": "password"
+}

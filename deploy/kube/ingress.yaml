@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: hubot
+  name: hubot
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+  - host: {{DOMAIN}}
+    http:
+      paths:
+      - backend:
+          serviceName: hubot-service
+          servicePort: hubot-svc-port
+  tls:
+  - hosts:
+    - {{DOMAIN}}
+    secretName: {{DOMAIN}}-tls

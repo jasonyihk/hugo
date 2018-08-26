@@ -1,0 +1,46 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  namespace: hubot
+  name: hubot
+  labels:
+    app: hubot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hubot
+  template:
+    metadata:
+      labels:
+        app: hubot
+    spec:
+      containers:
+      - name: hubot
+        image: {{ECR}}/hugo:{{IMAGE_TAG}}
+        ports:
+        - name: hubot-port
+          containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: hubot-config
+        readinessProbe:
+          tcpSocket:
+            port: hubot-port
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+          periodSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+        livenessProbe:
+          tcpSocket:
+            port: hubot-port
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+          periodSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+        resources:
+          limits:
+            memory: 300Mi
+            cpu: 100m
